@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int minimumBoxes(vector<int>& ap, vector<int>& cap) {
+        int n=ap.size();
+        int m=cap.size();
+        sort(cap.begin(),cap.end());
+        long long sum=0;
+        for(int i=0;i<n;i++){
+            sum+=ap[i];
+        }
+        int cnt=0;
+        for(int i=m-1;i>=0;i--){
+            if(sum  >= cap[i]) sum-=cap[i];
+            else sum=0;
+            cnt++;
+            if(sum<=0) break;
+        }
+        return cnt;
+    }
+};
