@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int bestClosingTime(string c) {
+        int n=c.size();
+        int idx=n,ans=0,minans=0;
+        for(int i=0;i<n;i++){
+            if(c[i]=='N') ans++;
+        }
+        minans=ans;
+        for(int i=n-1;i>=0;i--){
+             if(c[i]=='Y') ans++;
+             else ans--;
+             if(ans<=minans){
+                idx=i;
+                minans=ans;
+             }
+        }
+        return idx;
+    }
+};
